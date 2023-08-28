@@ -24,7 +24,7 @@ unsigned long LedpreviousMillis = 0; //This is from basicOTA, and already define
 const long Ledinterval = 500;//This is from basicOTA, and already define here...
 
 String FirmwareVer = {
-  "2.7"
+  "2.8"
 };
 #define URL_fw_Version "https://raw.githubusercontent.com/my-dudhwala/ota___web/main/version.txt"
 #define URL_fw_Bin "https://raw.githubusercontent.com/my-dudhwala/ota___web/main/ota___web.ino.esp32.bin"
@@ -83,15 +83,15 @@ void repeatedCall() {
       firmwareUpdate();
     }
   }
-//  if (currentMillis - LedpreviousMillis >= Ledinterval) {
-//    LedpreviousMillis = currentMillis;
-//    if (ledState == LOW) {
-//      ledState = HIGH;
-//    } else {
-//      ledState = LOW;
-//    }
-//    digitalWrite(LED_BUILTIN, ledState);
-//  }
+  if (currentMillis - LedpreviousMillis >= Ledinterval) {
+    LedpreviousMillis = currentMillis;
+    if (ledState == LOW) {
+      ledState = HIGH;
+    } else {
+      ledState = LOW;
+    }
+    digitalWrite(LED_BUILTIN, ledState);
+  }
   if ((currentMillis - previousMillis_2) >= mini_interval) {
     previousMillis_2 = currentMillis;
     Serial.print("idle loop...");
