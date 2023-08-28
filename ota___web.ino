@@ -9,9 +9,14 @@
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 //----------------------Basic OTA(Network port) END
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+#include <AsyncElegantOTA.h>
 
 const char * ssid = "R&D Web";
 const char * password = "123456789";
+
+AsyncWebServer server(80);
 
 #define LED_BUILTIN 2
 int ledState = LOW;
@@ -19,7 +24,7 @@ unsigned long LedpreviousMillis = 0; //This is from basicOTA, and already define
 const long Ledinterval = 500;//This is from basicOTA, and already define here...
 
 String FirmwareVer = {
-  "2.4"
+  "2.5"
 };
 #define URL_fw_Version "https://raw.githubusercontent.com/my-dudhwala/ota___web/main/version.txt"
 #define URL_fw_Bin "https://raw.githubusercontent.com/my-dudhwala/ota___web/main/ota___web.ino.esp32.bin"
@@ -135,6 +140,15 @@ void setup() {
   Serial.println(FirmwareVer);
   pinMode(LED_BUILTIN, OUTPUT);
   connect_wifi();
+    //----------------------Basic OTA(Network port) START
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send(200, "text/plain", "Hi! This is a sample response.");
+  });
+
+  AsyncElegantOTA.begin(&server);    // Start AsyncElegantOTA
+  server.begin();
+  Serial.println("HTTP server started");
+  //----------------------Elegant OTA(Network port) END 
   //----------------------Basic OTA(Network port) START
   ArduinoOTA
   .onStart([]() {
