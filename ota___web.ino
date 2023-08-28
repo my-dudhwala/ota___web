@@ -24,7 +24,7 @@ unsigned long LedpreviousMillis = 0; //This is from basicOTA, and already define
 const long Ledinterval = 500;//This is from basicOTA, and already define here...
 
 String FirmwareVer = {
-  "2.6"
+  "2.7"
 };
 #define URL_fw_Version "https://raw.githubusercontent.com/my-dudhwala/ota___web/main/version.txt"
 #define URL_fw_Bin "https://raw.githubusercontent.com/my-dudhwala/ota___web/main/ota___web.ino.esp32.bin"
