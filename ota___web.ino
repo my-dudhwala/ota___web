@@ -42,7 +42,7 @@ int FirmwareVersionCheck();
 
 unsigned long previousMillis = 0; // will store last time LED was updated
 unsigned long previousMillis_2 = 0;
-const long interval = 25000;
+const long interval = 1500;
 const long mini_interval = 1000;
 
 #ifndef CERT_H
