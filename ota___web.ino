@@ -24,7 +24,7 @@ unsigned long LedpreviousMillis = 0; //This is from basicOTA, and already define
 const long Ledinterval = 500;//This is from basicOTA, and already define here...
 
 String FirmwareVer = {
-  "3.0"
+  "3.1"
 };
 
 //Test change
