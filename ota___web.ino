@@ -24,7 +24,7 @@ unsigned long LedpreviousMillis = 0; //This is from basicOTA, and already define
 const long Ledinterval = 500;//This is from basicOTA, and already define here...
 
 String FirmwareVer = {
-  "3.1"
+  "3.2"
 };
 
 //Test change
@@ -99,7 +99,7 @@ void repeatedCall() {
     previousMillis_2 = currentMillis;
     Serial.print("new idle loop...");
     Serial.print(num++);
-    Serial.print(" Active new firmware version:");
+    Serial.print(" Active fast firmware version:");
     Serial.println(FirmwareVer);
     if (WiFi.status() == WL_CONNECTED)
     {
